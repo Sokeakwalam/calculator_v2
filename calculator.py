@@ -1,6 +1,5 @@
 import re
-import operators as O
-
+from operators import CalculatorSequence as CS
 class Calculate:
     def __init__(self, calculator_input):
         self.calculator_input = calculator_input.strip()
@@ -25,29 +24,29 @@ class Calculate:
             pos2 = data.index(")")
             bracket_data = data[pos1+1:pos2]
             while "^" in bracket_data:
-                O.power_of(bracket_data)
+                CS.power_of(bracket_data)
             while "*" in bracket_data:
-                O.multiplication(bracket_data)
+                CS.multiplication(bracket_data)
             while "/" in bracket_data:
-                O.division(bracket_data)
+                CS.division(bracket_data)
             while "+" in bracket_data:
-                O.addition(bracket_data)
+                CS.addition(bracket_data)
             while "-" in bracket_data:
-                O.subtraction(bracket_data)
+                CS.subtraction(bracket_data)
             data[pos1] = bracket_data[0]
             del data[pos1+1:pos2+1]    
     
     def no_brackets(self,data):
         while "^" in data:
-            O.power_of(data)
+            CS.power_of(data)
         while "*" in data:
-            O.multiplication(data)
+            CS.multiplication(data)
         while "/" in data:
-            O.division(data)
+            CS.division(data)
         while "+" in data:
-            O.addition(data)
+            CS.addition(data)
         while "-" in data:
-            O.subtraction(data)
+            CS.subtraction(data)
         
     def calculations(self):
         data = self.split_input()
