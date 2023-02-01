@@ -3,10 +3,19 @@ import operators as O
 
 class Calculate:
     def __init__(self, calculator_input):
-        self.calculator_input = calculator_input
+        self.calculator_input = calculator_input.strip()
+
+    def clean_data(self):
+        self.calculator_input
+        validate = re.findall(r'[0-9()^/*+-]', self.calculator_input)
+        unwanted_data = [x for x in self.calculator_input if x not in validate]
+        if unwanted_data != []:
+            return "Invalid Input"
+        else:
+            return self.calculator_input
 
     def split_input(self):
-        split_data = re.split(r'([()^/*+-])', self.calculator_input)
+        split_data = re.split(r'([()^/*+-])', self.clean_data())
         splitted_input = [x for x in split_data if x != '']
         return splitted_input
 
