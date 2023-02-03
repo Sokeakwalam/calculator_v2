@@ -23,6 +23,8 @@ class CalculatorSequence:
         for i in range(len(data)):
             division = 0
             if data[i] == "/":
+                if int(data[i+1]) == 0:
+                    raise Exception("Zero Division Error")
                 division = int(data[i-1]) / int(data[i+1])
                 data[i-1] = division
                 del data[i:i+2]

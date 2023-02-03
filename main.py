@@ -8,12 +8,8 @@ class main():
         user_input = C(inputed_data)
         
         answer = user_input.calculations()
-        if len(answer) > 1:
-            for i in range(len(answer)-1):
-                final_answer = answer[i] * answer[i+1]
-            return final_answer
-        else:
-            return answer[0]
+        return answer
+        
     print(main_calculation())
 
     

@@ -14,9 +14,9 @@ class Calculate:
             return self.calculator_input
 
     def split_input(self):
-        split_data = re.split(r'([()^/*+-])', self.clean_data())
-        splitted_input = [x for x in split_data if x != '']
-        return splitted_input
+        self.split_data = re.split(r'([()^/*+-])', self.clean_data())
+        self.splitted_input = [x for x in self.split_data if x != '']
+        return self.splitted_input
 
     def brackets(self, data):
         while "(" and ")" in data:
@@ -41,8 +41,10 @@ class Calculate:
             CS.power_of(data)
         while "*" in data:
             CS.multiplication(data)
+        
         while "/" in data:
             CS.division(data)
+                
         while "+" in data:
             CS.addition(data)
         while "-" in data:
@@ -53,7 +55,14 @@ class Calculate:
 
         self.brackets(data)
         self.no_brackets(data)
-        return data
+
+        final_answer = 1
+        for i in data:
+            final_answer *= i
+            return final_answer
+
+        
+        
 
         
         
