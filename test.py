@@ -76,6 +76,12 @@ class TestCalculator(unittest.TestCase):
         result = calculator.calculations()
         self.assertEqual(result, 17)
 
+    def zero_division_error(self):
+        data = 2/0
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertRaises(ZeroDivisionError, result)
+
 
     
 

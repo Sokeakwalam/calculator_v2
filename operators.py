@@ -25,7 +25,7 @@ class CalculatorSequence:
             division = 0
             if data[i] == "/":
                 if float(data[i+1]) == 0:
-                    raise Exception("Zero Division Error")
+                    raise ZeroDivisionError("Zero Division Error")
                 division = float(data[i-1]) / float(data[i+1])
                 data[i-1] = division
                 del data[i:i+2]
