@@ -9,7 +9,7 @@ class Calculate:
         validate = re.findall(r'[0-9()^/*+-]', self.calculator_input)
         unwanted_data = [x for x in self.calculator_input if x not in validate]
         if unwanted_data != []:
-            return "Invalid Input"
+            raise ValueError("Invalid data input")
         else:
             return self.calculator_input
 
@@ -81,8 +81,6 @@ class Calculate:
         for i in data:
             final_answer *= float(i)
         return final_answer
-
-        # return data
 
         
         
