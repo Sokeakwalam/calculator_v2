@@ -3,24 +3,81 @@ from calculator import Calculate as C
 
 
 
-class TestEquals(unittest.TestCase):
+class TestCalculator(unittest.TestCase):
+    def test_bracket(self):
+        data = "(2+1*5)"
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertEqual(result, 7)
+
+    def test_off(self):
+        data = "2(3*4)"
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertEqual(result, 24)
     
-    data = "2*3+4/2(4)"
-    calculator = C(data)
-    result = calculator.calculations()
-    answer = 32
-    
-    def test_sum(self):
-        self.assertEqual(self.result, self.answer)
+    def test_power(self):
+        data = "2^2"
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertEqual(result, 4)
 
     def test_multiplicataion(self):
-        self.assertEqual(self.result, self.answer)
+        data = "2*3*4"
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertEqual(result, 24)
 
     def test_division(self):
-        self.assertEqual(self.result, self.answer)
+        data = "8/2"
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertEqual(result, 4)
 
-    def test_bracket(self):
-        self.assertEqual(self.result, self.answer)
+    def test_sum(self):
+        data = "2+3"
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertEqual(result, 5)
+
+    def test_subtraction(self):
+        data = "10-5"
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertEqual(result, 5)
+    
+    def test_double_minus(self):
+        data = "10--5"
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertEqual(result, 15)
+
+    def test_double_plus(self):
+        data = "10++5"
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertEqual(result, 15)
+
+    def test_minus_plus(self):
+        data = "10-+5"
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertEqual(result, 5)
+
+    def test_plus_minus(self):
+        data = "10-+5"
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertEqual(result, 5)
+
+    def test_combination(self):
+        data = "2*2(4)+(5-2)-8/2^2"
+        calculator = C(data)
+        result = calculator.calculations()
+        self.assertEqual(result, 17)
+
+
+    
 
 
 

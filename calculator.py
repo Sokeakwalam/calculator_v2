@@ -23,18 +23,36 @@ class Calculate:
             pos1 = data.index("(")
             pos2 = data.index(")")
             bracket_data = data[pos1+1:pos2]
-            while "^" in bracket_data:
-                CS.power_of(bracket_data)
-            while "*" in bracket_data:
-                CS.multiplication(bracket_data)
-            while "/" in bracket_data:
-                CS.division(bracket_data)
-            while "+" in bracket_data:
-                CS.addition(bracket_data)
-            while "-" in bracket_data:
-                CS.subtraction(bracket_data)
-            data[pos1] = bracket_data[0]
-            del data[pos1+1:pos2+1]    
+
+            if len(bracket_data) > 1:      
+                while "^" in bracket_data:
+                    CS.power_of(bracket_data)
+                while "*" in bracket_data:
+                    CS.multiplication(bracket_data)
+                while "/" in bracket_data:
+                    CS.division(bracket_data)
+                while "-" in bracket_data:
+                    CS.subtraction(bracket_data)
+                while "+" in bracket_data:
+                    CS.addition(bracket_data)
+                data[pos1] = bracket_data[0]
+                del data[pos1+1:pos2+1]
+                
+            elif len(bracket_data) == 1:
+                check = []
+                operators = ["^","*", "/", "+", "-"]
+                for j in operators:
+                    if data[pos1-1] == j:
+                        check.append(data[pos1-1])
+                        break
+                if len(check) <= 0:
+                    data[pos1-1] = float(data[pos1-1]) * float(bracket_data[0])
+                    del data[pos1:pos2+1]
+                else:
+                    data[pos1] = float(bracket_data[0])
+                    del data[pos1+1:pos2+1]
+
+                
     
     def no_brackets(self,data):
         while "^" in data:
@@ -44,11 +62,13 @@ class Calculate:
         
         while "/" in data:
             CS.division(data)
-                
-        while "+" in data:
-            CS.addition(data)
+
         while "-" in data:
             CS.subtraction(data)
+
+        while "+" in data:
+            CS.addition(data)
+        
         
     def calculations(self):
         data = self.split_input()
@@ -57,9 +77,12 @@ class Calculate:
         self.no_brackets(data)
 
         final_answer = 1
+
         for i in data:
-            final_answer *= i
-            return final_answer
+            final_answer *= float(i)
+        return final_answer
+
+        # return data
 
         
         
