@@ -1,6 +1,5 @@
 import unittest
 from calculator import Calculate as C
-import operators as O
 
 
 
