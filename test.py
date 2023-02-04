@@ -1,9 +1,6 @@
 import unittest
 from calculator import Calculate as C
 
-
-
-
 class TestCalculator(unittest.TestCase):
     def test_bracket(self):
         data = "(2+1*5)"

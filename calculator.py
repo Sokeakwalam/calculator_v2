@@ -1,5 +1,6 @@
 import re
 from operators import CalculatorSequence as CS
+
 class Calculate:
     def __init__(self, calculator_input):
         self.calculator_input = calculator_input.strip()
@@ -16,7 +17,6 @@ class Calculate:
     def split_input(self):
         self.split_data = re.split(r'([()^/*+-])', self.clean_data())
         self.splitted_input = [x for x in self.split_data if x != '']
-
         operators = ["(", ")", "^", "/", "*", "+", "-"]
         for i in range(len(self.splitted_input)):   
             if self.splitted_input[i] not in operators:
