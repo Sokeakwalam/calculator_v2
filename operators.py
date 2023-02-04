@@ -1,10 +1,19 @@
 class CalculatorSequence:
+    def off(data):
+        for i in range(len(data)-1):
+            if type(data[i]) == float and type(data[i+1]) == float:
+                temp = data[i] * data[i+1]
+                data[i] = temp
+                del data[i+1]
+                break
+        
+        return data
 
     def power_of(data):
         for i in range(len(data)):
             power_of = 0
             if data[i] == "^":
-                power_of = float(data[i-1]) ** float(data[i+1])
+                power_of = data[i-1] ** data[i+1]
                 data[i-1] = power_of
                 del data[i:i+2]
                 break
@@ -14,7 +23,7 @@ class CalculatorSequence:
         for i in range(len(data)):
             multiply = 0
             if data[i] == "*":
-                multiply = float(data[i-1]) * float(data[i+1])
+                multiply = data[i-1] * data[i+1]
                 data[i-1] = multiply
                 del data[i:i+2]
                 break
@@ -24,9 +33,9 @@ class CalculatorSequence:
         for i in range(len(data)):
             division = 0
             if data[i] == "/":
-                if float(data[i+1]) == 0:
+                if data[i+1] == 0:
                     raise ZeroDivisionError("Zero Division Error")
-                division = float(data[i-1]) / float(data[i+1])
+                division = data[i-1] / data[i+1]
                 data[i-1] = division
                 del data[i:i+2]
                 break
@@ -40,7 +49,7 @@ class CalculatorSequence:
                     data[i] = "+"
                     del data[i+1]
                     break
-                addition = float(data[i-1]) + float(data[i+1])
+                addition = data[i-1] + data[i+1]
                 data[i-1] = addition
                 del data[i:i+2]
                 break
@@ -62,8 +71,9 @@ class CalculatorSequence:
                     data[i-1] = "-"
                     del data[i:i+2]
                     break
-                subtraction = float(data[i-1]) - float(data[i+1])
+                subtraction = data[i-1] - data[i+1]
                 data[i-1] = subtraction
                 del data[i:i+2]
                 break
+
         return data
